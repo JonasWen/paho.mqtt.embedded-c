@@ -14,6 +14,8 @@ src += Glob('MQTTClient-C/src/*.c')
 path += [cwd + '/MQTTClient-C/src/RTThread']
 src += Glob('MQTTClient-C/src/RTThread/*.c')
 
-group = DefineGroup('paho.mqtt', src, depend = [''], CPPPATH = path)
+CPPDEFINES = ['MQTTCLIENT_PLATFORM_HEADER=MQTTRTThread.h']
+
+group = DefineGroup('paho.mqtt', src, depend = [''], CPPPATH = path, CPPDEFINES = CPPDEFINES)
 Return('group')
 
