@@ -24,6 +24,7 @@
 #include <netdb.h>
 #include <sal_netdb.h>
 #include <string.h>
+#include <sys/errno.h>
 
 int ThreadStart(Thread* thread, void (*fn)(void*), void* arg)
 {
@@ -118,6 +119,12 @@ int RTThread_read(Network* n, unsigned char* buffer, int len, int timeout_ms)
     
     while (nleft > 0) {
         nread = recv(fd, ptr, nleft, 0);
+
+        if ((nread == -1) && (errno == EAGAIN))
+        {
+            nread = 0;
+        }
+
         if (nread < 0) {
             return -1;
         } else if (nread == 0) {
