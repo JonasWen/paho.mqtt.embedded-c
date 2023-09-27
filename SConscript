@@ -15,7 +15,8 @@ path += [cwd + '/MQTTClient-C/src/RTThread']
 src += Glob('MQTTClient-C/src/RTThread/*.c')
 
 CPPDEFINES = ['MQTTCLIENT_PLATFORM_HEADER=MQTTRTThread.h']
+CPPDEFINES += ['MQTT_TASK']
 
-group = DefineGroup('paho.mqtt', src, depend = [''], CPPPATH = path, CPPDEFINES = CPPDEFINES)
+group = DefineGroup('paho.mqtt.embedded-c', src, depend = [''], CPPPATH = path, CPPDEFINES = CPPDEFINES)
 Return('group')
 
