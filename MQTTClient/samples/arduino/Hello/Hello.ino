@@ -32,7 +32,7 @@ void messageArrived(MQTT::MessageData& md)
   MQTT::Message &message = md.message;
   
   sprintf(printbuf, "Message %d arrived: qos %d, retained %d, dup %d, packetid %d\n", 
-		++arrivedcount, message.qos, message.retained, message.dup, message.id);
+        ++arrivedcount, message.qos, message.retained, message.dup, message.id);
   Serial.print(printbuf);
   sprintf(printbuf, "Payload %s\n", (char*)message.payload);
   Serial.print(printbuf);

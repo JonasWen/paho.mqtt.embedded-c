@@ -61,8 +61,8 @@ enum returnCode { BUFFER_OVERFLOW = -2, FAILURE = -1, SUCCESS = 0 };
  *
 typedef struct Network
 {
-	int (*mqttread)(Network*, unsigned char* read_buffer, int, int);
-	int (*mqttwrite)(Network*, unsigned char* send_buffer, int, int);
+    int (*mqttread)(Network*, unsigned char* read_buffer, int, int);
+    int (*mqttwrite)(Network*, unsigned char* send_buffer, int, int);
 } Network;*/
 
 /* The Timer structure must be defined in the platform specific header,
@@ -142,7 +142,7 @@ typedef struct MQTTClient
  * @param
  */
 DLLExport void MQTTClientInit(MQTTClient* client, Network* network, unsigned int command_timeout_ms,
-		unsigned char* sendbuf, size_t sendbuf_size, unsigned char* readbuf, size_t readbuf_size);
+        unsigned char* sendbuf, size_t sendbuf_size, unsigned char* readbuf, size_t readbuf_size);
 
 /** MQTT Connect - send an MQTT connect packet down the network and wait for a Connack
  *  The nework object must be connected to the network endpoint before calling this
@@ -150,7 +150,7 @@ DLLExport void MQTTClientInit(MQTTClient* client, Network* network, unsigned int
  *  @return success code
  */
 DLLExport int MQTTConnectWithResults(MQTTClient* client, MQTTPacket_connectData* options,
-    MQTTConnackData* data);
+        MQTTConnackData* data);
 
 /** MQTT Connect - send an MQTT connect packet down the network and wait for a Connack
  *  The nework object must be connected to the network endpoint before calling this

@@ -8,7 +8,7 @@
 
 class MQTTEthernet : public MQTTSocket
 {
-public:    
+public:
     MQTTEthernet() : MQTTSocket(&eth)
     {
         eth.connect();
@@ -22,7 +22,7 @@ public:
 private:
 
     EthernetInterface eth;
-    
+
 };
 
 

@@ -287,7 +287,7 @@ private:
     unsigned short incomingQoS2messages[MAX_INCOMING_QOS2_MESSAGES];
     bool isQoS2msgidFree(unsigned short id);
     bool useQoS2msgid(unsigned short id);
-	void freeQoS2msgid(unsigned short id);
+    void freeQoS2msgid(unsigned short id);
 #endif
 
 };
@@ -329,7 +329,7 @@ MQTT::Client<Network, Timer, a, MAX_MESSAGE_HANDLERS>::Client(Network& network, 
 {
     this->command_timeout_ms = command_timeout_ms;
     cleansession = true;
-	  closeSession();
+    closeSession();
 }
 
 
@@ -645,7 +645,7 @@ int MQTT::Client<Network, Timer, MAX_MQTT_PACKET_SIZE, b>::cycle(Timer& timer)
             if (MQTTDeserialize_ack(&type, &dup, &mypacketid, readbuf, MAX_MQTT_PACKET_SIZE) != 1)
                 rc = FAILURE;
             else if ((len = MQTTSerialize_ack(sendbuf, MAX_MQTT_PACKET_SIZE,
-						         (packet_type == PUBREC) ? PUBREL : PUBCOMP, 0, mypacketid)) <= 0)
+                    (packet_type == PUBREC) ? PUBREL : PUBCOMP, 0, mypacketid)) <= 0)
                 rc = FAILURE;
             else if ((rc = sendPacket(len, timer)) != SUCCESS) // send the PUBREL packet
                 rc = FAILURE; // there was a problem
